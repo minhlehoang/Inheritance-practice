@@ -14,20 +14,30 @@ public class TestWithInput {
 		String city = JOptionPane.showInputDialog("City ?");
 		String state = JOptionPane.showInputDialog("State ?");
 		int zipCode = Integer.parseInt(JOptionPane.showInputDialog("Zipcode ?"));
-		Address address1 = new Address(street, houseNumber, city, state, zipCode);
+		Address address = new Address(street, houseNumber, city, state, zipCode);
 		
 		// Create an instance of MyDate using the constructor of MyDate
 		// In this example, using the constructor MyDate(int year, int month, int day) 
-		MyDate date1 = new MyDate(2010, 11, 17);
+		int year = Integer.parseInt(JOptionPane.showInputDialog("Year ?"));
+		int month = Integer.parseInt(JOptionPane.showInputDialog("Month ?"));
+		int day = Integer.parseInt(JOptionPane.showInputDialog("Date ?"));
+		MyDate date = new MyDate(year, month, day);
 			  
 		// create an instance of Faculty using the constructor of Faculty
 		// An instance of Faculty is assigned to superclass Person
-		Person person1 = new Faculty("Ramadan", "Abdunabi", address1, "(970) 491-6227", "ramadan.abdunabi@business.colostate.edu", "Professor", date1);
+		String firstname = JOptionPane.showInputDialog("Firstname ?");
+		String lastName = JOptionPane.showInputDialog("Lastname ?");
+		//Address address, 
+		String phoneNumber = JOptionPane.showInputDialog("Phone number ?");
+		String emailAddress = JOptionPane.showInputDialog("Email Address ?");
+		String rankOfFaculty = JOptionPane.showInputDialog("Rank of Faculty ?"); 
+		//MyDate appointmentDate
+		Person person = new Faculty(firstname, lastName, address, phoneNumber, emailAddress, rankOfFaculty, date);
 		
 		// Hard-coding the array size to 2
-		personArray = new Person[2];
+		//personArray = new Person[2];
 		// Storing faculty information in the first element of personArray
-		personArray [0] = person1;
+		//personArray [0] = person1;
 		
 		System.out.println(personArray[0].toString());;
 		// This will print out:
