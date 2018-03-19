@@ -2,14 +2,20 @@ package PA06;
 
 import javax.swing.JOptionPane;
 
-public class TestByHardCoding {
+public class TestWithInput {
 	
 	static Person[] personArray;
 	
 	public static void main(String[] args){		
 
 		// Create an instance of Address using the constructor of Address
-		Address address1 = new Address("Rockwell Hall East", 121, "Fort Collins", "Colorado", 80521);
+		String street = JOptionPane.showInputDialog("Please enter your address");
+		int houseNumber = Integer.parseInt(JOptionPane.showInputDialog("What's your house number?"));
+		String city = JOptionPane.showInputDialog("City ?");
+		String state = JOptionPane.showInputDialog("State ?");
+		int zipCode = Integer.parseInt(JOptionPane.showInputDialog("Zipcode ?"));
+		Address address1 = new Address(street, houseNumber, city, state, zipCode);
+		
 		// Create an instance of MyDate using the constructor of MyDate
 		// In this example, using the constructor MyDate(int year, int month, int day) 
 		MyDate date1 = new MyDate(2010, 11, 17);
