@@ -229,73 +229,122 @@ public class TestWithInput {
 				}
 			}
 			
-			
+			//Create address object
 			Address address = new Address(street, houseNumber, city, state, zipCode);
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////
 			Object[] options = {"Please select one of these options", "Student", "Faculty"};
 		    JComboBox optionList = new JComboBox(options);
 		    optionList.setSelectedIndex(0);
-		    JOptionPane.showMessageDialog(null, optionList, "Are you a Student or a Faculty ?",
-		        JOptionPane.QUESTION_MESSAGE);
 		    
-		    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		    if(optionList.getSelectedItem() == "Student") {
-				Object[] student_status = {"Please select one of these options", "Freshman", "Sophomore", "Junior", "Senior", "Graduate Student"};
-			    JComboBox student_status_list = new JComboBox(student_status);
-			    student_status_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, student_status_list, "What year are you ?",
-			        JOptionPane.QUESTION_MESSAGE);
-				Person person = new Student(firstname, lastName, address, phoneNumber, emailAddress, student_status_list.getSelectedItem().toString());
-				personArray[i] = person;
-			}
-			else {
-				Object[] rankOfFaculty = {"Please select one of these options", "Professor", "Teacher Assistant", "Researcher", "Staff"};
-				JComboBox rankOfFaculty_list = new JComboBox(rankOfFaculty);
-				rankOfFaculty_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, rankOfFaculty_list, "What's your current position ?",
-			        JOptionPane.QUESTION_MESSAGE);
-			    //Get the year
-			    int year = LocalDate.now().getYear();
-			    Object[] years;
-			    years = new Integer[61];
-				for(int w = 0; w < 61; w++) {
-					years[w] = year - w;
+		    option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					JOptionPane.showMessageDialog(null, optionList, "Are you a Student or a Faculty ?", JOptionPane.QUESTION_MESSAGE);
+					////////////////////////////////////////////////////////////////////////////////////////////////////////////
+					if(optionList.getSelectedItem() == "Student") {
+						Object[] student_status = {"Please select one of these options", "Freshman", "Sophomore", "Junior", "Senior", "Graduate Student"};
+						JComboBox student_status_list = new JComboBox(student_status);
+						student_status_list.setSelectedIndex(0);
+						
+						option = JOptionPane.YES_OPTION;
+						while(option == JOptionPane.YES_OPTION) {
+							try {
+								JOptionPane.showMessageDialog(null, student_status_list, "What year are you ?", JOptionPane.QUESTION_MESSAGE);
+								if(student_status_list.getSelectedItem().toString() != "Please select one of these options") {
+									Person person = new Student(firstname, lastName, address, phoneNumber, emailAddress, student_status_list.getSelectedItem().toString());
+									personArray[i] = person;
+									option = 1;
+								}
+								else {
+									throw new Exception();
+								}
+							}
+							catch (Exception ex) {
+								option = JOptionPane.showConfirmDialog(null, "Invalid input! Please select your current year again.\nOtherwise, click No or Cancel to exit the program.");
+								if(option != JOptionPane.YES_OPTION) {
+									JOptionPane.showMessageDialog(null, "Exit program");
+									System.exit(0);
+								}							
+							}
+						}				
+					}
+					else if(optionList.getSelectedItem() == "Faculty") {
+						Object[] rankOfFaculty = {"Please select one of these options", "Professor", "Teacher Assistant", "Researcher", "Staff"};
+						JComboBox rankOfFaculty_list = new JComboBox(rankOfFaculty);
+						rankOfFaculty_list.setSelectedIndex(0);
+						option = JOptionPane.YES_OPTION;
+						while(option == JOptionPane.YES_OPTION) {
+							try {
+								JOptionPane.showMessageDialog(null, rankOfFaculty_list, "What's your current position ?", JOptionPane.QUESTION_MESSAGE);
+								if(rankOfFaculty_list.getSelectedItem().toString() == "Please select one of these options") {
+									throw new Exception();									
+								}
+								else {
+									option = 1;
+								}
+							}
+							catch(Exception ex){
+								option = JOptionPane.showConfirmDialog(null, "Invalid input! Please select your current position again.\nOtherwise, click No or Cancel to exit the program.");
+								if(option != JOptionPane.YES_OPTION) {
+									JOptionPane.showMessageDialog(null, "Exit program");
+									System.exit(0);
+								}
+							}
+						}
+						//Get the year
+						int year = LocalDate.now().getYear();
+						Object[] years;
+						years = new Integer[61];
+						for(int w = 0; w < 61; w++) {
+						years[w] = year - w;
+						}
+						JComboBox years_list = new JComboBox(years);
+						years_list.setSelectedIndex(0);
+						
+						JOptionPane.showMessageDialog(null, years_list, "Which year were you hired ?", JOptionPane.QUESTION_MESSAGE);
+						
+						//Get the month
+						Object[] months;
+						months = new Integer[12];
+						for(int z = 1; z < 13; z++) {
+						months[z-1] = z;
+						}				
+						JComboBox months_list = new JComboBox(months);
+						months_list.setSelectedIndex(0);
+						JOptionPane.showMessageDialog(null, months_list, "Which month were you hired ?", JOptionPane.QUESTION_MESSAGE);
+						
+						//Get the date
+						Object[] dates;
+						dates = new Integer[31];
+						for(int x = 1; x <32; x++) {
+						dates[x-1] = x;
+						}
+						JComboBox dates_list = new JComboBox(dates);
+						dates_list.setSelectedIndex(0);
+						JOptionPane.showMessageDialog(null, dates_list, "Which date were you hired ?", JOptionPane.QUESTION_MESSAGE);
+						//Create hire date object
+						MyDate date = new MyDate(Integer.parseInt(years_list.getSelectedItem().toString()), Integer.parseInt(months_list.getSelectedItem().toString()), Integer.parseInt(dates_list.getSelectedItem().toString()));
+						//create faculty object
+						Person person = new Faculty(firstname, lastName, address, phoneNumber, emailAddress, rankOfFaculty_list.getSelectedItem().toString(), date);
+						personArray[i] = person;
+					}
+					else {
+						throw new Exception();
+					}					
+					option = 1;
 				}
-				JComboBox years_list = new JComboBox(years);
-				years_list.setSelectedIndex(0);
-				
-			    JOptionPane.showMessageDialog(null, years_list, "Which year were you hired ?", JOptionPane.QUESTION_MESSAGE);
-			    
-				//Get the month
-				Object[] months;
-				months = new Integer[12];
-				for(int z = 1; z < 13; z++) {
-					months[z-1] = z;
-				}				
-			    JComboBox months_list = new JComboBox(months);
-			    months_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, months_list, "Which month were you hired ?", JOptionPane.QUESTION_MESSAGE);
-			    
-			    //Get the date
-			    Object[] dates;
-			    dates = new Integer[31];
-			    for(int x = 1; x <32; x++) {
-			    	dates[x-1] = x;
-			    }
-			    JComboBox dates_list = new JComboBox(dates);
-			    dates_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, dates_list, "Which date were you hired ?", JOptionPane.QUESTION_MESSAGE);
-			    //Create hire date object
-				MyDate date = new MyDate(Integer.parseInt(years_list.getSelectedItem().toString()), Integer.parseInt(months_list.getSelectedItem().toString()), Integer.parseInt(dates_list.getSelectedItem().toString()));
-				//create faculty object
-				Person person = new Faculty(firstname, lastName, address, phoneNumber, emailAddress, rankOfFaculty_list.getSelectedItem().toString(), date);
-				personArray[i] = person;
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Please select either Student or Faculty. Click No or Cancel if you want to exit the program.");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
 			}
 		}
 		for(int i=0; i < num_per; i++) {
 			output += personArray[i].toString() + "\n";
 		}
 		JOptionPane.showMessageDialog(null, output);
-		
 		}
 }
