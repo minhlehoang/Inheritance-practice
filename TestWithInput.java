@@ -9,54 +9,226 @@ public class TestWithInput {
 	
 	static Person[] personArray;
 	
-	public static void main(String[] args){		
+	public static void main(String[] args){	
+		int num_per = 0;
 		String student_or_faculty;
 /////////////////////////////Declare variables for information of Person//////////////////////////
-		String firstname;
-		String lastName;
-		String phoneNumber;
-		String emailAddress;
-		
-		
+		String firstname = null;
+		String lastName = null;
+		String phoneNumber = null;
+		String emailAddress = null;
 //////////////////////////////Declare variables for address input/////////////////////////////////
-		String street;
-		int houseNumber;
-		String city;
-		String state;
-		int zipCode;
-
-/////////////////////////////Declare variables for date//////////////////////////////////////////////
-	
+		String street = null;
+		int houseNumber = 0;
+		String city = null;
+		String state = null;
+		int zipCode = 0;
 		
-/////////////////////////////////////////////////////////////////////////////////////////////////////
 		String output = "Here is the list" + "\n";
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+		int option = JOptionPane.YES_OPTION;
+		while(option == JOptionPane.YES_OPTION) {
+			try {
+				num_per = Integer.parseInt(JOptionPane.showInputDialog("Number of person ?"));
+				if(num_per < 0) {
+					throw new Exception();
+				}
+				else if(num_per == 0) {
+					JOptionPane.showMessageDialog(null, "Exit program");
+					System.exit(0);
+				}
+				option = 1;
+			}
+			catch(Exception ex){
+				option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+				if(option != JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "Exit program");
+					System.exit(0);
+				}
+			}
+		}
 		
-		int num_per = Integer.parseInt(JOptionPane.showInputDialog("Number of person ?"));
 		personArray = new Person[num_per];
 		for(int i = 0; i < num_per; i++) {
 			//Getting common information of both Students and Faculties
-			/*
-			firstname = JOptionPane.showInputDialog("Firstname ?");
-			lastName = JOptionPane.showInputDialog("Lastname ?");
-			phoneNumber = JOptionPane.showInputDialog("Phone number ?");
-			emailAddress = JOptionPane.showInputDialog("Email Address ?");			
-			houseNumber = Integer.parseInt(JOptionPane.showInputDialog("What's your house number?"));
-			street = JOptionPane.showInputDialog("Please enter your street name");
-			city = JOptionPane.showInputDialog("City ?");
-			state = JOptionPane.showInputDialog("State ?");
-			zipCode = Integer.parseInt(JOptionPane.showInputDialog("Zipcode ?"));
-			*/
+			//First name
+			option = JOptionPane.YES_OPTION;
+			JOptionPane.showMessageDialog(null, "Begin the information for the person number " + (i+1));
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					firstname = JOptionPane.showInputDialog("Firstname ?");
+					if(firstname.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
 			
-			firstname = "Minh";
-			lastName = "Le";
-			phoneNumber = "940404040";
-			emailAddress = "gfif@gmail.com";		
-			houseNumber = 1234;
-			street = "bbb avenue";
-			city = "LA";
-			state = "CA";
-			zipCode = 93030;
+			//Last name
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					lastName = JOptionPane.showInputDialog("Lastname ?");
+					if(lastName.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//Phone number
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					phoneNumber = JOptionPane.showInputDialog("Phone number ?");
+					if(phoneNumber.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//Email address
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					emailAddress = JOptionPane.showInputDialog("Email Address ?");	
+					if(emailAddress.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//House number
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					houseNumber = Integer.parseInt(JOptionPane.showInputDialog("What's your house number?"));
+					if(houseNumber < 0) {
+						throw new Exception();
+					}
+					else if(houseNumber == 0) {
+						System.exit(0);
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//Street name
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					street = JOptionPane.showInputDialog("Please enter your street name");
+					if(street.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//City
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					city = JOptionPane.showInputDialog("City ?");
+					if(street.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//State
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					state = JOptionPane.showInputDialog("State ?");
+					if(state.length() == 0) {
+						throw new Exception();
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
+			//Zipcode
+			option = JOptionPane.YES_OPTION;
+			while(option == JOptionPane.YES_OPTION) {
+				try {
+					zipCode = Integer.parseInt(JOptionPane.showInputDialog("Zipcode ?"));
+					if(zipCode < 0) {
+						throw new Exception();
+					}
+					else if(zipCode == 0) {
+						System.exit(0);
+					}
+					option = 1;
+				}
+				catch(Exception ex){
+					option = JOptionPane.showConfirmDialog(null, "Invalid input! Would you like to try again?");
+					if(option != JOptionPane.YES_OPTION) {
+						JOptionPane.showMessageDialog(null, "Exit program");
+						System.exit(0);
+					}
+				}
+			}
+			
 			
 			Address address = new Address(street, houseNumber, city, state, zipCode);
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,8 +263,8 @@ public class TestWithInput {
 				}
 				JComboBox years_list = new JComboBox(years);
 				years_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, years_list, "Which year were you hired ?",
-			        JOptionPane.QUESTION_MESSAGE);
+				
+			    JOptionPane.showMessageDialog(null, years_list, "Which year were you hired ?", JOptionPane.QUESTION_MESSAGE);
 			    
 				//Get the month
 				Object[] months;
@@ -102,8 +274,7 @@ public class TestWithInput {
 				}				
 			    JComboBox months_list = new JComboBox(months);
 			    months_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, months_list, "Which month were you hired ?",
-			        JOptionPane.QUESTION_MESSAGE);
+			    JOptionPane.showMessageDialog(null, months_list, "Which month were you hired ?", JOptionPane.QUESTION_MESSAGE);
 			    
 			    //Get the date
 			    Object[] dates;
@@ -113,11 +284,10 @@ public class TestWithInput {
 			    }
 			    JComboBox dates_list = new JComboBox(dates);
 			    dates_list.setSelectedIndex(0);
-			    JOptionPane.showMessageDialog(null, dates_list, "Which date were you hired ?",
-			        JOptionPane.QUESTION_MESSAGE);
-				
-				
+			    JOptionPane.showMessageDialog(null, dates_list, "Which date were you hired ?", JOptionPane.QUESTION_MESSAGE);
+			    //Create hire date object
 				MyDate date = new MyDate(Integer.parseInt(years_list.getSelectedItem().toString()), Integer.parseInt(months_list.getSelectedItem().toString()), Integer.parseInt(dates_list.getSelectedItem().toString()));
+				//create faculty object
 				Person person = new Faculty(firstname, lastName, address, phoneNumber, emailAddress, rankOfFaculty_list.getSelectedItem().toString(), date);
 				personArray[i] = person;
 			}
