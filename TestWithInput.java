@@ -56,7 +56,7 @@ public class TestWithInput {
 			JOptionPane.showMessageDialog(null, "Begin the information for the person number " + (i+1));
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					firstname = JOptionPane.showInputDialog("Firstname ?");
+					firstname = JOptionPane.showInputDialog("What is your firstname ?");
 					if(firstname.length() == 0) {
 						throw new Exception();
 					}
@@ -75,7 +75,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					lastName = JOptionPane.showInputDialog("Lastname ?");
+					lastName = JOptionPane.showInputDialog("What is your lastname ?");
 					if(lastName.length() == 0) {
 						throw new Exception();
 					}
@@ -94,7 +94,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					phoneNumber = JOptionPane.showInputDialog("Phone number ?");
+					phoneNumber = JOptionPane.showInputDialog("What is your phone number ?");
 					if(phoneNumber.length() == 0) {
 						throw new Exception();
 					}
@@ -113,7 +113,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					emailAddress = JOptionPane.showInputDialog("Email Address ?");	
+					emailAddress = JOptionPane.showInputDialog("What is your email address ?");	
 					if(emailAddress.length() == 0) {
 						throw new Exception();
 					}
@@ -173,7 +173,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					city = JOptionPane.showInputDialog("City ?");
+					city = JOptionPane.showInputDialog("Which city are you currently in ?");
 					if(street.length() == 0) {
 						throw new Exception();
 					}
@@ -192,7 +192,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					state = JOptionPane.showInputDialog("State ?");
+					state = JOptionPane.showInputDialog("Which state are you currently in ?");
 					if(state.length() == 0) {
 						throw new Exception();
 					}
@@ -211,7 +211,7 @@ public class TestWithInput {
 			option = JOptionPane.YES_OPTION;
 			while(option == JOptionPane.YES_OPTION) {
 				try {
-					zipCode = Integer.parseInt(JOptionPane.showInputDialog("Zipcode ?"));
+					zipCode = Integer.parseInt(JOptionPane.showInputDialog("What zipcode are you currently in ?"));
 					if(zipCode < 0) {
 						throw new Exception();
 					}
