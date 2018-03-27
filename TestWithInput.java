@@ -269,7 +269,7 @@ public class TestWithInput {
 						}				
 					}
 					else if(optionList.getSelectedItem() == "Faculty") {
-						Object[] rankOfFaculty = {"Please select one of these options", "Professor", "Teacher Assistant", "Researcher", "Staff"};
+						Object[] rankOfFaculty = {"Please select one of these options", "Lecturer", "Assistant Professor", "Associate Professor", "Professor"};
 						JComboBox rankOfFaculty_list = new JComboBox(rankOfFaculty);
 						rankOfFaculty_list.setSelectedIndex(0);
 						option = JOptionPane.YES_OPTION;
