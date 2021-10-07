@@ -9,6 +9,7 @@ public class TestByHardCoding {
 	public static void main(String[] args){		
 
 		// Create an instance of Address using the constructor of Address
+		//testing
 		Address address1 = new Address("Rockwell Hall East", 121, "Fort Collins", "Colorado", 80521);
 		// Create an instance of MyDate using the constructor of MyDate
 		// In this example, using the constructor MyDate(int year, int month, int day) 
